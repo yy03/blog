@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Linux下Shell脚本安装软件 | YuanYE</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/blog/logo.png">
+    <meta name="description" content="Kori Lin BLOG">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" conetent="KORILIN">
+    <meta name="twitter:creator" conetent="@Kori_Lin">
+    
+    <link rel="preload" href="/blog/assets/css/1.styles.1f37ec6d.css" as="style"><link rel="preload" href="/blog/assets/js/app.3aaa0c49.js" as="script"><link rel="preload" href="/blog/assets/js/27.7e05cc7c.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.73419e87.js"><link rel="prefetch" href="/blog/assets/js/11.05829631.js"><link rel="prefetch" href="/blog/assets/js/12.7e8086c5.js"><link rel="prefetch" href="/blog/assets/js/13.f1400667.js"><link rel="prefetch" href="/blog/assets/js/14.c6dd0951.js"><link rel="prefetch" href="/blog/assets/js/15.0f37c6f6.js"><link rel="prefetch" href="/blog/assets/js/16.a4662ec0.js"><link rel="prefetch" href="/blog/assets/js/17.e8372a64.js"><link rel="prefetch" href="/blog/assets/js/18.37715e79.js"><link rel="prefetch" href="/blog/assets/js/19.e397b51f.js"><link rel="prefetch" href="/blog/assets/js/2.1e961ff5.js"><link rel="prefetch" href="/blog/assets/js/20.19f61b49.js"><link rel="prefetch" href="/blog/assets/js/21.3b043514.js"><link rel="prefetch" href="/blog/assets/js/22.60b4227d.js"><link rel="prefetch" href="/blog/assets/js/23.0dbcd6f8.js"><link rel="prefetch" href="/blog/assets/js/24.b5bb6a2c.js"><link rel="prefetch" href="/blog/assets/js/25.f36cd997.js"><link rel="prefetch" href="/blog/assets/js/26.2173183c.js"><link rel="prefetch" href="/blog/assets/js/28.bcba955e.js"><link rel="prefetch" href="/blog/assets/js/29.f0b4c45b.js"><link rel="prefetch" href="/blog/assets/js/3.58551e39.js"><link rel="prefetch" href="/blog/assets/js/30.04c3ed65.js"><link rel="prefetch" href="/blog/assets/js/4.bf1654a3.js"><link rel="prefetch" href="/blog/assets/js/5.cb45b255.js"><link rel="prefetch" href="/blog/assets/js/6.aa9fd703.js"><link rel="prefetch" href="/blog/assets/js/7.a807b0d2.js"><link rel="prefetch" href="/blog/assets/js/8.29c46423.js"><link rel="prefetch" href="/blog/assets/js/9.58f55c6f.js">
+    <link rel="stylesheet" href="/blog/assets/css/1.styles.1f37ec6d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><span><div id="sidebar" data-v-6e67c360><div class="PC-sidebar" data-v-6e67c360><div class="title" data-v-6e67c360>
+            @<span data-v-6e67c360>YuanYE</span></div> <a href="/blog/" class="router-link-active bar-button" data-v-7201a518 data-v-6e67c360><div class="svg" data-v-7201a518><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home" data-v-7201a518><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" data-v-7201a518></path> <polyline points="9 22 9 12 15 12 15 22" data-v-7201a518></polyline></svg> <!----> <!----></div> <div class="name" data-v-7201a518>Home</div></a> <a href="/blog/archive" class="bar-button" data-v-7201a518 data-v-6e67c360><div class="svg" data-v-7201a518><!----> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book" data-v-7201a518><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" data-v-7201a518></path> <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" data-v-7201a518></path></svg> <!----></div> <div class="name" data-v-7201a518>Archive</div></a> <a href="/blog/about/" class="bar-button" data-v-7201a518 data-v-6e67c360><div class="svg" data-v-7201a518><!----> <!----> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user" data-v-7201a518><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" data-v-7201a518></path> <circle cx="12" cy="7" r="4" data-v-7201a518></circle></svg></div> <div class="name" data-v-7201a518>About</div></a></div> <!----></div><div class="main"><div class="wrap" data-v-5d573f62><div class="post" data-v-5d573f62><div class="title" data-v-5d573f62><h1 data-v-5d573f62>Linux下Shell脚本安装软件</h1></div> <div class="info" data-v-5d573f62><div class="date" data-v-382026d3 data-v-5d573f62><div class="svg" data-v-382026d3><svg t="1610177893433" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5858" width="16" height="16" class="icon" data-v-382026d3><path d="M512 192c179.2 0 320 140.8 320 320s-140.8 320-320 320-320-140.8-320-320S332.8 192 512 192M512 128C300.8 128 128 300.8 128 512s172.8 384 384 384 384-172.8 384-384S723.2 128 512 128L512 128z" p-id="5859" fill="#707070" data-v-382026d3></path> <path d="M640 672c-6.4 0-19.2 0-25.6-6.4l-128-128C486.4 531.2 480 518.4 480 512L480 288C480 268.8 492.8 256 512 256s32 12.8 32 32l0 211.2 121.6 121.6c12.8 12.8 12.8 32 0 44.8C659.2 672 646.4 672 640 672z" p-id="5860" fill="#707070" data-v-382026d3></path></svg></div> <div class="content" data-v-382026d3>2021-11-30</div></div> <div class="category" data-v-a6fce850 data-v-5d573f62><div class="svg" data-v-a6fce850><svg t="1610177808699" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4460" width="16" height="16" class="icon" data-v-a6fce850><path d="M725.290667 725.290667m-213.333334 0a213.333333 213.333333 0 1 0 426.666667 0 213.333333 213.333333 0 1 0-426.666667 0Z" p-id="4461" fill="#707070" data-v-a6fce850></path> <path d="M789.205333 234.794667m-149.333333 0a149.333333 149.333333 0 1 0 298.666667 0 149.333333 149.333333 0 1 0-298.666667 0Z" p-id="4462" fill="#707070" data-v-a6fce850></path> <path d="M235.861333 788.138667m-149.333333 0a149.333333 149.333333 0 1 0 298.666667 0 149.333333 149.333333 0 1 0-298.666667 0Z" p-id="4463" fill="#707070" data-v-a6fce850></path> <path d="M298.709333 298.709333m-213.333333 0a213.333333 213.333333 0 1 0 426.666667 0 213.333333 213.333333 0 1 0-426.666667 0Z" p-id="4464" fill="#707070" data-v-a6fce850></path></svg></div> <div class="content" data-v-a6fce850>笔记</div></div> <div class="tags" data-v-2ed44237 data-v-5d573f62><div class="svg" data-v-2ed44237><svg t="1610177743508" viewBox="0 0 1085 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2934" width="16" height="16" class="icon" data-v-2ed44237><path d="M256 256q0-30.285714-21.428571-51.714286T182.857143 182.857143t-51.714286 21.428571T109.714286 256t21.428571 51.714286T182.857143 329.142857t51.714286-21.428571T256 256z m609.714286 329.142857q0 30.285714-21.142857 51.428572l-280.571429 281.142857q-22.285714 21.142857-52 21.142857-30.285714 0-51.428571-21.142857L52 508.571429q-21.714286-21.142857-36.857143-57.714286T0 384V146.285714q0-29.714286 21.714286-51.428571t51.428571-21.714286h237.714286q30.285714 0 66.857143 15.142857T436 125.142857l408.571429 408q21.142857 22.285714 21.142857 52z m219.428571 0q0 30.285714-21.142857 51.428572l-280.571429 281.142857q-22.285714 21.142857-52 21.142857-20.571429 0-33.714285-8t-30.285715-25.714286l268.571429-268.571428q21.142857-21.142857 21.142857-51.428572 0-29.714286-21.142857-52L527.428571 125.142857q-21.714286-21.714286-58.285714-36.857143T402.285714 73.142857h128q30.285714 0 66.857143 15.142857t58.285714 36.857143l408.571429 408q21.142857 22.285714 21.142857 52z" p-id="2935" fill="#8a8a8a" data-v-2ed44237></path></svg></div> <div class="content" data-v-2ed44237><span class="tag" style="color:#FF7D73;" data-v-2ed44237>
+            Linux
+        </span></div></div></div> <div class="line" data-v-5d573f62></div> <div class="content" data-v-5d573f62><div class="content__default" data-v-5d573f62><h2 id="shell脚本安装"><a href="#shell脚本安装" class="header-anchor">#</a> Shell脚本安装</h2> <h3 id="修改ip"><a href="#修改ip" class="header-anchor">#</a> 修改IP</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token shebang important">#!/bin/bash</span>
+systemctl stop docker
+<span class="token function">ip</span> <span class="token function">link</span> <span class="token builtin class-name">set</span> dev docker0 down
+brctl delbr docker0
+systemctl disable docker
+
+<span class="token function">chmod</span> <span class="token number">777</span> fire.sh
+<span class="token function">chmod</span> <span class="token number">777</span> jdk.sh
+<span class="token function">chmod</span> <span class="token number">777</span> redis.sh
+<span class="token function">chmod</span> <span class="token number">777</span> elastic.sh
+<span class="token function">chmod</span> <span class="token number">777</span> kibana.sh
+<span class="token function">mv</span> ./jdk-8u271-linux-x64.tar.gz /opt/
+<span class="token function">mv</span> ./elasticsearch-7.6.0-linux-x86_64.tar.gz /opt/
+<span class="token function">mv</span> ./kibana-7.6.0-linux-x86_64.tar.gz /opt/
+<span class="token function">mv</span> ./nginx-1.18.0.tar.gz /opt/
+<span class="token function">mv</span> ./redis-6.0.9.tar.gz /opt/
+<span class="token function">mv</span> ./mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz /opt/
+<span class="token function">mv</span> ./rocketmq4.7.1 /opt/
+
+<span class="token builtin class-name">read</span> -p <span class="token string">&quot;输入ip：&quot;</span> <span class="token function">ip</span>
+<span class="token builtin class-name">read</span> -p <span class="token string">&quot;输入网关&quot;</span> gateway
+<span class="token function">sed</span> -i <span class="token string">&quot;s/IPADDR=192.168.3.100/IPADDR='<span class="token variable">$ip</span>'/g&quot;</span> /etc/sysconfig/network-scripts/ifcfg-ens32
+<span class="token function">sed</span> -i <span class="token string">&quot;s/GATEWAY=192.168.3.1/GATEWAY='<span class="token variable">$gateway</span>/g&quot;</span> /etc/sysconfig/network-scripts/ifcfg-ens32
+<span class="token function">sed</span> -i <span class="token string">&quot;s/192.168.3.105 localhost/<span class="token variable">$ip</span> localhost/g&quot;</span> /etc/hosts
+
+systemctl restart network
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;ip信息&quot;</span>
+<span class="token function">ifconfig</span>
+
+</code></pre></div><h3 id="开放端口"><a href="#开放端口" class="header-anchor">#</a> 开放端口</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token shebang important">#!/bin/bash</span>
+firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span><span class="token number">80</span>/tcp --permanent
+firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span><span class="token number">3306</span>/tcp --permanent
+firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span><span class="token number">6379</span>/tcp --permanent
+firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span><span class="token number">5601</span>/tcp --permanent
+firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span><span class="token number">10911</span>/tcp --permanent
+firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span><span class="token number">9876</span>/tcp --permanent
+firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span><span class="token number">9300</span>/tcp --permanent
+firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span><span class="token number">9200</span>/tcp --permanent
+firewall-cmd --reload
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;----开放端口----&quot;</span>
+firewall-cmd --list-ports
+</code></pre></div><h3 id="安装jdk"><a href="#安装jdk" class="header-anchor">#</a> 安装JDK</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token assign-left variable">jdkTargz</span><span class="token operator">=</span><span class="token string">&quot;/opt/jdk-8u271-linux-x64.tar.gz&quot;</span>
+<span class="token comment"># 1. remove openjdk if exists.  </span>
+<span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">rpm</span> -qa <span class="token operator">|</span> <span class="token function">grep</span> jdk <span class="token operator">|</span> <span class="token function">grep</span> -v <span class="token function">grep</span><span class="token variable">)</span></span>  
+<span class="token keyword">do</span>  
+  <span class="token builtin class-name">echo</span> <span class="token string">&quot;Deleting rpm -&gt; &quot;</span><span class="token variable">$i</span>  
+  <span class="token function">rpm</span> -e --nodeps <span class="token variable">$i</span>  
+<span class="token keyword">done</span>  
+
+<span class="token comment"># 检查原先是否已配置java环境变量</span>
+<span class="token function-name function">checkExist</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+ <span class="token assign-left variable">jdk1</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">grep</span> -n <span class="token string">&quot;export JAVA_HOME=.*&quot;</span> /etc/profile <span class="token operator">|</span> <span class="token function">cut</span> -f1 -d<span class="token string">':'</span><span class="token variable">)</span></span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> -n <span class="token string">&quot;<span class="token variable">$jdk1</span>&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;JAVA_HOME已配置，删除内容&quot;</span>
+        <span class="token function">sed</span> -i <span class="token string">&quot;<span class="token variable">${jdk1}</span>d&quot;</span> /etc/profile
+    <span class="token keyword">fi</span>
+ <span class="token assign-left variable">jdk2</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">grep</span> -n <span class="token string">&quot;export CLASSPATH=.*\<span class="token variable">$JAVA_HOME</span>.*&quot;</span> /etc/profile <span class="token operator">|</span> <span class="token function">cut</span> -f1 -d<span class="token string">':'</span><span class="token variable">)</span></span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> -n <span class="token string">&quot;<span class="token variable">$jdk2</span>&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;CLASSPATH路径已配置，删除内容&quot;</span>
+        <span class="token function">sed</span> -i <span class="token string">&quot;<span class="token variable">${jdk2}</span>d&quot;</span> /etc/profile
+    <span class="token keyword">fi</span>
+ <span class="token assign-left variable">jdk3</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">grep</span> -n <span class="token string">&quot;export PATH=.*\<span class="token variable">$JAVA_HOME</span>.*&quot;</span> /etc/profile <span class="token operator">|</span> <span class="token function">cut</span> -f1 -d<span class="token string">':'</span><span class="token variable">)</span></span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> -n <span class="token string">&quot;<span class="token variable">$jdk3</span>&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;PATH-JAVA路径已配置，删除内容&quot;</span>
+        <span class="token function">sed</span> -i <span class="token string">&quot;<span class="token variable">${jdk3}</span>d&quot;</span> /etc/profile
+    <span class="token keyword">fi</span>
+<span class="token punctuation">}</span>
+ 
+<span class="token comment"># 查询是否有jdk.tar.gz</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -e <span class="token variable">$jdkTargz</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">then</span>
+ <span class="token builtin class-name">echo</span> <span class="token string">&quot;— — 存在jdk压缩包 — —&quot;</span>
+ <span class="token builtin class-name">echo</span> <span class="token string">&quot;正在解压jdk压缩包...&quot;</span>
+ <span class="token function">tar</span> -zxvf /opt/jdk-8u271-linux-x64.tar.gz -C /opt
+ <span class="token keyword">if</span> <span class="token punctuation">[</span> -e <span class="token string">&quot;/usr/local/java&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+ <span class="token keyword">then</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">&quot;存在该文件夹，删除...&quot;</span>
+  <span class="token function">rm</span> -rf /usr/local/java
+ <span class="token keyword">fi</span>
+ <span class="token builtin class-name">echo</span> <span class="token string">&quot;---------------------------------&quot;</span>
+ <span class="token builtin class-name">echo</span> <span class="token string">&quot;正在建立jdk文件路径...&quot;</span>
+ <span class="token builtin class-name">echo</span> <span class="token string">&quot;---------------------------------&quot;</span>
+ <span class="token function">mv</span> /opt/jdk1.8.0_271 /usr/local/java
+ <span class="token comment"># 检查配置信息</span>
+ checkExist 
+ <span class="token builtin class-name">echo</span> <span class="token string">&quot;---------------------------------&quot;</span>
+ <span class="token builtin class-name">echo</span> <span class="token string">&quot;正在配置jdk环境...&quot;</span>
+ <span class="token function">sed</span> -i <span class="token string">'<span class="token variable">$a</span> export JAVA_HOME=/usr/local/java'</span> /etc/profile
+ <span class="token function">sed</span> -i <span class="token string">'<span class="token variable">$a</span> export CLASSPATH=$:CLASSPATH:<span class="token variable">$JAVA_HOME</span>/lib/'</span> /etc/profile
+ <span class="token function">sed</span> -i <span class="token string">'<span class="token variable">$a</span> export PATH=<span class="token environment constant">$PATH</span>:<span class="token variable">$JAVA_HOME</span>/bin'</span> /etc/profile
+ <span class="token builtin class-name">echo</span> <span class="token string">&quot;---------------------------------&quot;</span>
+ <span class="token builtin class-name">echo</span> <span class="token string">&quot;JAVA环境配置已完成...&quot;</span>
+ <span class="token builtin class-name">echo</span> <span class="token string">&quot;---------------------------------&quot;</span>
+ <span class="token builtin class-name">echo</span> <span class="token string">&quot;正在重新加载配置文件...&quot;</span>
+ <span class="token builtin class-name">echo</span> <span class="token string">&quot;---------------------------------&quot;</span>
+ <span class="token builtin class-name">source</span> /etc/profile
+ <span class="token builtin class-name">echo</span> <span class="token string">&quot;配置版本信息如下：&quot;</span>
+ java -version
+<span class="token keyword">else</span>
+ <span class="token builtin class-name">echo</span> <span class="token string">&quot;未检测到安装包，请将安装包放到/opt目录下&quot;</span>
+<span class="token keyword">fi</span>
+</code></pre></div><h3 id="安装redis"><a href="#安装redis" class="header-anchor">#</a> 安装Redis</h3> <p><strong>gcc</strong></p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token shebang important">#!/bin/bash</span>
+yum -y <span class="token function">install</span> centos-release-scl
+yum -y <span class="token function">install</span> devtoolset-9-gcc devtoolset-9-gcc-c++ devtoolset-9-binutils
+scl <span class="token builtin class-name">enable</span> devtoolset-9 <span class="token function">bash</span>
+<span class="token comment"># 需要注意的是scl命令启用只是临时的，退出shell或重启就会恢复原系统gcc版本。如果要长期使用gcc 9.3的话：</span>
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;source /opt/rh/devtoolset-9/enable&quot;</span> <span class="token operator">&gt;&gt;</span>/etc/profile
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;gcc完成&quot;</span>
+gcc -v
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;安装gcc环境&quot;</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> -f /opt/redis-6.0.9.tar.gz <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;/opt/目录中没有压缩包redis-6.0.9.tar.gz&quot;</span>
+	<span class="token builtin class-name">exit</span> <span class="token number">1</span>
+<span class="token keyword">fi</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;解压redis压缩包&quot;</span>
+<span class="token function">tar</span> -zxvf /opt/redis-6.0.9.tar.gz -C /opt
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -e <span class="token string">&quot;/usr/local/redis&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">&quot;存在该文件夹，删除...&quot;</span>
+  <span class="token function">rm</span> -rf /usr/local/redis
+<span class="token keyword">fi</span>
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;正在建立redis文件路径...&quot;</span>
+<span class="token function">mv</span> /opt/redis-6.0.9 /usr/local/redis
+<span class="token builtin class-name">cd</span> /usr/local/redis
+<span class="token function">make</span>
+<span class="token function">make</span> <span class="token function">install</span> <span class="token assign-left variable">PREFIX</span><span class="token operator">=</span>/usr/local/redis
+<span class="token function">cp</span> ./redis.conf ./bin/
+<span class="token function">sed</span> -i <span class="token string">'s/bind 127.0.0.1/bind 0.0.0.0/g'</span> /usr/local/redis/bin/redis.conf
+<span class="token function">sed</span> -i <span class="token string">'s/daemonize no/daemonize yes/g'</span> /usr/local/redis/bin/redis.conf
+
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;设置开机自启动&quot;</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -e <span class="token string">&quot;/lib/systemd/system/redis.service&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">&quot;存在该文件夹，删除...&quot;</span>
+  <span class="token function">rm</span> -rf /lib/systemd/system/redis.service
+<span class="token keyword">fi</span>
+<span class="token function">touch</span> /lib/systemd/system/redis.service
+cat<span class="token operator">&gt;</span>/lib/systemd/system/redis.service<span class="token operator">&lt;&lt;</span><span class="token string">EOF
+[Unit]
+Description=Redis
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/redis_6379.pid
+ExecStart=/usr/local/redis/bin/redis-server /usr/local/redis/bin/redis.conf
+ExecReload=/bin/kill -s HUP <span class="token variable">$MAINPID</span>
+ExecStop=/bin/kill -s QUIT <span class="token variable">$MAINPID</span>
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+EOF</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;启动redis&quot;</span>
+systemctl start redis
+systemctl <span class="token builtin class-name">enable</span> redis
+
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;redis状态&quot;</span>
+systemctl status redis
+</code></pre></div><h3 id="安装es"><a href="#安装es" class="header-anchor">#</a> 安装ES</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token shebang important">#!/bin/sh</span>
+<span class="token assign-left variable">user</span><span class="token operator">=</span>elk
+<span class="token assign-left variable">group</span><span class="token operator">=</span>elk
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> -f /opt/elasticsearch-7.6.0-linux-x86_64.tar.gz <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;/opt/目录中没有压缩包redis-6.0.9.tar.gz&quot;</span>
+	<span class="token builtin class-name">exit</span> <span class="token number">1</span>
+<span class="token keyword">fi</span>
+<span class="token builtin class-name">read</span> -p <span class="token string">&quot;请输入本机ip:&quot;</span> <span class="token function">ip</span>
+<span class="token comment">#create group if not exists</span>
+<span class="token function">egrep</span> <span class="token string">&quot;^<span class="token variable">$group</span>&quot;</span> /etc/group <span class="token operator">&gt;&amp;</span> /dev/null
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> -ne <span class="token number">0</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+    <span class="token function">groupadd</span> <span class="token variable">$group</span>
+<span class="token keyword">fi</span>
+
+<span class="token comment">#create user if not exists</span>
+<span class="token function">egrep</span> <span class="token string">&quot;^<span class="token variable">$user</span>&quot;</span> /etc/passwd <span class="token operator">&gt;&amp;</span> /dev/null
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> -ne <span class="token number">0</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+    <span class="token function">useradd</span> -g <span class="token variable">$group</span> <span class="token variable">$user</span>
+<span class="token keyword">fi</span>
+
+cat<span class="token operator">&gt;&gt;</span>/etc/security/limits.conf<span class="token operator">&lt;&lt;</span><span class="token string">EOF
+* soft nofile 300000
+* hard nofile 300000
+* soft nproc 102400
+* soft memlock unlimited
+* hard memlock unlimited
+EOF</span>
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;vm.max_map_count=262144&quot;</span> <span class="token operator">&gt;</span> /etc/sysctl.conf
+sysctl -p
+
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;解压elasticsearch安装包&quot;</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -e <span class="token string">&quot;/usr/local/elasticsearch&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;存在文件夹，删除...&quot;</span>
+    <span class="token function">rm</span> -rf /usr/local/elasticsearch
+<span class="token keyword">fi</span>
+
+<span class="token function">tar</span> -zxvf /opt/elasticsearch-7.6.0-linux-x86_64.tar.gz -C /opt
+<span class="token function">mv</span> /opt/elasticsearch-7.6.0 /usr/local/elasticsearch
+<span class="token function">chown</span> -R elk:elk /usr/local/elasticsearch
+<span class="token builtin class-name">cd</span> /usr/local/elasticsearch/
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;修改elasticsearch配置文件&quot;</span>
+cat<span class="token operator">&gt;&gt;</span>/usr/local/elasticsearch/config/elasticsearch.yml<span class="token operator">&lt;&lt;</span><span class="token string">EOF
+node.name: node-1
+network.host: 0.0.0.0
+discovery.seed_hosts: [&quot;<span class="token variable">$ip</span>&quot;]
+cluster.initial_master_nodes: [&quot;node-1&quot;]
+xpack.security.enabled: true
+xpack.security.transport.ssl.enabled: true
+xpack.license.self_generated.type: basic
+EOF</span>
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;启动ElasticSearch并配置密码&quot;</span>
+<span class="token function">su</span> elk<span class="token operator">&lt;&lt;</span>su<span class="token operator">!</span>
+<span class="token builtin class-name">cd</span> /usr/local/elasticsearch/bin
+./elasticsearch -d
+<span class="token function">sleep</span> 30s
+<span class="token builtin class-name">exit</span>
+su<span class="token operator">!</span>
+<span class="token builtin class-name">cd</span> /usr/local/elasticsearch/bin/
+./elasticsearch-setup-passwords interactive
+<span class="token function">sleep</span> 3s
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;设置开机自启&quot;</span>
+<span class="token function">sleep</span> 3s
+<span class="token function">touch</span> /etc/init.d/elasticsearch
+cat<span class="token operator">&gt;</span>/etc/init.d/elasticsearch<span class="token operator">&lt;&lt;</span><span class="token string">EOF
+#!/bin/bash
+#chkconfig: 345 63 37
+#description: elasticsearch
+#processname: elasticsearch-5.430
+
+export ES_HOME=/usr/local/elasticsearch
+
+case \<span class="token variable">$1</span> in
+        start)
+                su elk&lt;&lt;!
+                cd \<span class="token variable">$ES_HOME</span>
+                ./bin/elasticsearch -d -p pid
+                exit
+!
+                echo &quot;elasticsearch is started&quot;
+                ;;
+        stop)
+                pid=\<span class="token variable"><span class="token variable">`</span><span class="token function">cat</span> <span class="token punctuation">\</span>$ES_HOME/pid<span class="token punctuation">\</span><span class="token variable">`</span></span>
+                kill -9 \<span class="token variable">$pid</span>
+                echo &quot;elasticsearch is stopped&quot;
+                ;;
+        restart)
+                pid=\<span class="token variable"><span class="token variable">`</span><span class="token function">cat</span> <span class="token punctuation">\</span>$ES_HOME/pid<span class="token punctuation">\</span><span class="token variable">`</span></span>
+                kill -9 \<span class="token variable">$pid</span>
+                echo &quot;elasticsearch is stopped&quot;
+                sleep 1
+                su elk&lt;&lt;!
+                cd \<span class="token variable">$ES_HOME</span>
+                ./bin/elasticsearch -d -p pid
+                exit
+!
+                echo &quot;elasticsearch is started&quot;
+        ;;
+    *)
+        echo &quot;start|stop|restart&quot;
+        ;;
+esac
+exit 0
+EOF</span>
+<span class="token function">chmod</span> <span class="token number">777</span> /etc/init.d/elasticsearch
+<span class="token function">chkconfig</span> --add elasticsearch
+<span class="token function">chkconfig</span> --list
+</code></pre></div><h3 id="安装kibana"><a href="#安装kibana" class="header-anchor">#</a> 安装kibana</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> -f /opt/kibana-7.6.0-linux-x86_64.tar.gz <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;/opt/目录中没有压缩包kibana-7.6.0-linux-x86_64.tar.gz&quot;</span>
+	<span class="token builtin class-name">exit</span> <span class="token number">1</span>
+<span class="token keyword">fi</span>
+<span class="token builtin class-name">read</span> -p <span class="token string">&quot;当前主机ip：&quot;</span> <span class="token function">ip</span>
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;解压安装包&quot;</span>
+<span class="token function">tar</span> -zxvf /opt/kibana-7.6.0-linux-x86_64.tar.gz -C /opt
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -e <span class="token string">&quot;/usr/local/kibana&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;存在文件夹，删除...&quot;</span>
+    <span class="token function">rm</span> -rf /usr/local/kibana
+<span class="token keyword">fi</span>
+<span class="token function">mv</span> /opt/kibana-7.6.0-linux-x86_64 /usr/local/kibana
+
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;修改配置文件&quot;</span>
+cat<span class="token operator">&gt;&gt;</span>/usr/local/kibana/config/kibana.yml<span class="token operator">&lt;&lt;</span><span class="token string">EOF
+i18n.locale: &quot;zh-CN&quot;
+server.port: 5601
+server.host: &quot;0.0.0.0&quot;
+elasticsearch.hosts: [&quot;http://<span class="token variable">$ip</span>:9200&quot;]
+# 配置elasticsearch用户名和密码
+elasticsearch.username: &quot;elastic&quot;
+elasticsearch.password: &quot;123456&quot;
+EOF</span>
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;设置开机自启动&quot;</span>
+<span class="token function">touch</span> /etc/init.d/kibana
+cat<span class="token operator">&gt;</span>/etc/init.d/kibana<span class="token operator">&lt;&lt;</span><span class="token string">EOF
+#!/bin/bash
+# chkconfig:   2345 98  02
+# description:  kibana
+case \<span class="token variable">$1</span> in
+        start)
+           cd /usr/local/kibana/bin
+           ./kibana --allow-root &amp;;;
+        *) echo &quot;require start&quot;;;
+esac
+EOF</span>
+
+<span class="token function">chmod</span> <span class="token number">777</span> /etc/init.d/kibana
+<span class="token function">sleep</span> <span class="token number">2</span>
+<span class="token function">chkconfig</span> --add kibana
+<span class="token function">chkconfig</span> --list
+systemctl start kibana
+</code></pre></div><h3 id="安装nginx"><a href="#安装nginx" class="header-anchor">#</a> 安装Nginx</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> -f /opt/nginx-1.18.0.tar.gz <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;/opt/目录中没有压缩包nginx-1.18.0.tar.gz&quot;</span>
+	<span class="token builtin class-name">exit</span> <span class="token number">1</span>
+<span class="token keyword">fi</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;解压安装包并编译&quot;</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -e <span class="token string">&quot;/opt/nginx-1.18.0&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">&quot;存在该文件夹，删除...&quot;</span>
+  <span class="token function">rm</span> -rf /opt/nginx-1.18.0
+<span class="token keyword">fi</span>
+<span class="token function">tar</span> -zxvf /opt/nginx-1.18.0.tar.gz -C /opt/
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -e <span class="token string">&quot;/usr/local/nginx&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">&quot;存在该文件夹，删除...&quot;</span>
+  <span class="token function">rm</span> -rf /usr/local/nginx
+<span class="token keyword">fi</span>
+<span class="token function">mv</span> /opt/nginx-1.18.0 /opt/nginx
+<span class="token builtin class-name">cd</span> /opt/nginx
+./configure --prefix<span class="token operator">=</span>/usr/local/nginx
+<span class="token function">make</span>
+<span class="token function">make</span> <span class="token function">install</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;设置开机自启&quot;</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -e <span class="token string">&quot;/lib/systemd/system/nginx.service&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+  <span class="token function">rm</span> -rf /lib/systemd/system/nginx.service
+<span class="token keyword">fi</span>
+<span class="token function">touch</span> /lib/systemd/system/nginx.service
+cat<span class="token operator">&gt;</span>/lib/systemd/system/nginx.service<span class="token operator">&lt;&lt;</span><span class="token string">EOF
+[Unit]
+Description=nginx
+After=network.target
+ 
+[Service]
+Type=forking
+ExecStart=/usr/local/nginx/sbin/nginx
+ExecReload=/usr/local/nginx/sbin/nginx -s reload
+ExecStop=/usr/local/nginx/sbin/nginx -s quit
+PrivateTmp=true
+ 
+[Install]
+WantedBy=multi-user.target
+EOF</span>
+systemctl daemon-reload
+systemctl start nginx
+systemctl <span class="token builtin class-name">enable</span> nginx
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;nginx编译完成&quot;</span>
+</code></pre></div><h3 id="安装rocketmq"><a href="#安装rocketmq" class="header-anchor">#</a> 安装RocketMQ</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> -e /opt/rocketmq4.7.1 <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;/opt/目录中没有rocketmq4.7.1文件夹&quot;</span>
+	<span class="token builtin class-name">exit</span> <span class="token number">1</span>
+<span class="token keyword">fi</span>
+<span class="token builtin class-name">read</span> -p <span class="token string">&quot;当前主机ip：&quot;</span> <span class="token function">ip</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -e <span class="token string">&quot;/usr/local/rocketmq&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">&quot;存在该文件夹，删除...&quot;</span>
+  <span class="token function">rm</span> -rf /usr/local/rocketmq
+<span class="token keyword">fi</span>
+<span class="token function">mv</span> /opt/rocketmq4.7.1 /usr/local/rocketmq
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;设置开机自启&quot;</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -e <span class="token string">&quot;/etc/init.d/rocketmq&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+  <span class="token function">rm</span> -rf /etc/init.d/rocketmq
+<span class="token keyword">fi</span>
+<span class="token function">touch</span> /etc/init.d/rocketmq
+cat<span class="token operator">&gt;</span>/etc/init.d/rocketmq<span class="token operator">&lt;&lt;</span><span class="token string">EOF
+#!/bin/bash
+# rocketmq - this script starts and stops the rocketmq daemon
+#
+# chkconfig: - 85 15
+
+# jdk根目录
+export JAVA_HOME=/usr/local/java
+export PATH=\<span class="token variable">$JAVA_HOME</span>/bin:\<span class="token environment constant">$PATH</span>
+
+ROCKETMQ_HOME=/usr/local/rocketmq
+ROCKETMQ_BIN=\<span class="token variable">${ROCKETMQ_HOME}</span>/bin
+ADDR=<span class="token variable">$ip</span>:9876
+LOG_DIR=\<span class="token variable">${ROCKETMQ_HOME}</span>/logs
+NAMESERVER_LOG=\<span class="token variable">${LOG_DIR}</span>/namesrv.log
+BROKER_LOG=\<span class="token variable">${LOG_DIR}</span>/broker.log
+
+start() {
+if [ ! -d \<span class="token variable">${LOG_DIR}</span> ];then
+mkdir \<span class="token variable">${LOG_DIR}</span>
+fi
+cd \<span class="token variable">${ROCKETMQ_HOME}</span>
+nohup sh bin/mqnamesrv &gt; \<span class="token variable">${NAMESERVER_LOG}</span> 2&gt;&amp;1 &amp;
+echo -n &quot;The Name Server boot success...&quot;
+nohup sh bin/mqbroker -n \<span class="token variable">${ADDR}</span> &gt; \<span class="token variable">${BROKER_LOG}</span> 2&gt;&amp;1 &amp;
+echo -n &quot;The broker[%s, \<span class="token variable">${ADDR}</span>] boot success...&quot;
+}
+stop() {
+cd \<span class="token variable">${ROCKETMQ_HOME}</span>
+sh bin/mqshutdown broker
+sleep 1
+sh bin/mqshutdown namesrv
+}
+restart() {
+stop
+sleep 5
+start
+}
+
+
+case &quot;\<span class="token variable">$1</span>&quot; in
+start)
+start
+;;
+stop)
+stop
+;;
+restart)
+restart
+;;
+*)
+echo \$&quot;Usage: \<span class="token variable">$0</span> {start|stop|restart}&quot;
+exit 2
+esac
+EOF</span>
+<span class="token function">chmod</span> <span class="token number">777</span> /etc/init.d/rocketmq
+<span class="token function">chkconfig</span> --add rocketmq
+<span class="token function">chkconfig</span> rocketmq on
+<span class="token function">chkconfig</span> --list
+</code></pre></div><h3 id="安装mysql"><a href="#安装mysql" class="header-anchor">#</a> 安装MySQL</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token assign-left variable">user</span><span class="token operator">=</span>mysql
+<span class="token assign-left variable">group</span><span class="token operator">=</span>mysql
+
+<span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">rpm</span> -qa <span class="token operator">|</span> <span class="token function">grep</span> mariadb <span class="token operator">|</span> <span class="token function">grep</span> -v <span class="token function">grep</span><span class="token variable">)</span></span>  
+<span class="token keyword">do</span>  
+  <span class="token builtin class-name">echo</span> <span class="token string">&quot;Deleting rpm -&gt; &quot;</span><span class="token variable">$i</span>  
+  <span class="token function">rpm</span> -e --nodeps <span class="token variable">$i</span>  
+<span class="token keyword">done</span> 
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> -e /opt/mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;/opt/目录中没有mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz&quot;</span>
+	<span class="token builtin class-name">exit</span> <span class="token number">1</span>
+<span class="token keyword">fi</span>
+
+<span class="token function">egrep</span> <span class="token string">&quot;^<span class="token variable">$group</span>&quot;</span> /etc/group <span class="token operator">&gt;&amp;</span> /dev/null
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> -ne <span class="token number">0</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+    <span class="token function">groupadd</span> <span class="token variable">$group</span>
+<span class="token keyword">fi</span>
+
+<span class="token function">egrep</span> <span class="token string">&quot;^<span class="token variable">$user</span>&quot;</span> /etc/passwd <span class="token operator">&gt;&amp;</span> /dev/null
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> -ne <span class="token number">0</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+    <span class="token function">useradd</span> -g <span class="token variable">$group</span> <span class="token variable">$user</span>
+<span class="token keyword">fi</span>
+
+<span class="token function">rm</span> /etc/my.cnf
+<span class="token function">tar</span> -zxvf /opt/mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz -C /opt/
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -e <span class="token string">&quot;/usr/local/mysql&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">&quot;存在该文件夹，删除...&quot;</span>
+  <span class="token function">rm</span> -rf /usr/local/mysql
+<span class="token keyword">fi</span>
+<span class="token function">mv</span> /opt/mysql-5.7.17-linux-glibc2.5-x86_64 /usr/local/mysql
+<span class="token builtin class-name">cd</span> /usr/local/
+<span class="token function">chown</span> -R mysql:mysql mysql/
+<span class="token function">chmod</span> -R <span class="token number">775</span> mysql/
+
+<span class="token builtin class-name">cd</span> ./mysql/bin
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;编译mysql&quot;</span>
+./mysqld --initialize --user<span class="token operator">=</span>mysql --datadir<span class="token operator">=</span>/usr/local/mysql/data --basedir<span class="token operator">=</span>/usr/local/mysql
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -e <span class="token string">&quot;/etc/my.cnf&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+  <span class="token function">rm</span> -rf /etc/my.cnf
+<span class="token keyword">fi</span>
+<span class="token function">touch</span> /etc/my.cnf
+cat<span class="token operator">&gt;</span>/etc/my.cnf<span class="token operator">&lt;&lt;</span><span class="token string">EOF
+[mysqld]
+datadir=/usr/local/mysql/data
+port = 3306
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+symbolic-links=0
+max_connections=400
+innodb_file_per_table=1
+lower_case_table_names=1
+skip-grant-tables
+EOF</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -e <span class="token string">&quot;/etc/init.d/mysql&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+  <span class="token function">rm</span> -rf /etc/init.d/mysql
+<span class="token keyword">fi</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -e <span class="token string">&quot;/usr/bin/mysql&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+  <span class="token function">rm</span> -rf /usr/bin/mysql
+<span class="token keyword">fi</span>
+<span class="token function">ln</span> -s /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql
+<span class="token function">ln</span> -s /usr/local/mysql/bin/mysql /usr/bin/mysql
+<span class="token function">service</span> mysql start
+mysql -u root<span class="token operator">&lt;&lt;</span><span class="token string">EOF
+use mysql;
+update user set Update_priv='Y' where user='root';
+update user set Grant_priv ='Y' where user ='root';
+flush privileges;
+grant all privileges on *.* to root@'localhost' identified by &quot;123456&quot; with grant option;
+flush privileges;
+update user set user.Host='%' where user.User='root';
+flush privileges;
+exit;
+EOF</span>
+
+<span class="token function">sed</span> -i <span class="token string">&quot;s/skip-grant-tables/#skip-grant-tables/g&quot;</span> /etc/my.cnf
+<span class="token function">service</span> mysql stop
+
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;设置开机自启&quot;</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -e <span class="token string">&quot;/etc/init.d/mysqld&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+  <span class="token function">rm</span> -rf /etc/init.d/mysqld
+<span class="token keyword">fi</span>
+<span class="token function">cp</span> /usr/local/mysql/support-files/mysql.server /etc/init.d/mysqld
+<span class="token function">chmod</span> +x /etc/init.d/mysqld
+<span class="token function">chkconfig</span> --add mysqld
+<span class="token function">chkconfig</span> --list
+systemctl start mysql
+</code></pre></div><h3 id="全部安装"><a href="#全部安装" class="header-anchor">#</a> 全部安装</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token function">chmod</span> <span class="token number">777</span> ./fire.sh
+<span class="token function">chmod</span> <span class="token number">777</span> ./jdk.sh
+<span class="token function">chmod</span> <span class="token number">777</span> ./redis.sh
+<span class="token function">chmod</span> <span class="token number">777</span> ./elastic.sh
+<span class="token function">chmod</span> <span class="token number">777</span> ./kibana.sh
+<span class="token function">chmod</span> <span class="token number">777</span> ./mysql.sh
+<span class="token function">chmod</span> <span class="token number">777</span> ./rocketmq.sh
+<span class="token function">chmod</span> <span class="token number">777</span> ./nginx.sh
+
+<span class="token function">sh</span> ./fire.sh
+<span class="token function">sh</span> ./jdk.sh
+<span class="token function">sh</span> ./redis.sh
+<span class="token function">sh</span> ./elastic.sh
+<span class="token function">sh</span> ./kibana.sh
+<span class="token function">sh</span> ./mysql.sh
+<span class="token function">sh</span> ./rocketmq.sh
+<span class="token function">sh</span> ./nginx.sh
+<span class="token function">sleep</span> 3s
+systemctl start kibana
+systemctl start rocketmq
+</code></pre></div></div></div> <div class="footer" data-v-5d573f62><div title="share this post" class="share share-icon" data-v-5d573f62><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2" data-v-5d573f62><circle cx="18" cy="5" r="3" data-v-5d573f62></circle><circle cx="6" cy="12" r="3" data-v-5d573f62></circle><circle cx="18" cy="19" r="3" data-v-5d573f62></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49" data-v-5d573f62></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" data-v-5d573f62></line></svg> <path d="M896 469.333333l-298.666667-298.666667 0 170.666667C298.666667 384 170.666667 597.333333 128 810.666667c106.666667-149.333333 256-217.6 469.333333-217.6L597.333333 768 896 469.333333z" p-id="7022" fill="#1296db" data-v-5d573f62></path></div> <div class="share" data-v-5d573f62><!----></div> <div class="share" data-v-5d573f62><!----></div></div></div> <div class="footer" data-v-882df4f6 data-v-5d573f62><footer data-v-882df4f6><div data-v-882df4f6>
+            © 2018 -
+            2022
+            <svg viewBox="64 64 896 896" data-icon="flag" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false" data-v-882df4f6><path fill="#1296db" d="M880 305H624V192c0-17.7-14.3-32-32-32H184v-40c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v784c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V640h248v113c0 17.7 14.3 32 32 32h416c17.7 0 32-14.3 32-32V337c0-17.7-14.3-32-32-32z" data-v-882df4f6></path></svg>
+            @Yuan YE
+        </div> <div data-v-882df4f6>
+            Based on the
+            <a href="https://vuepress.vuejs.org/" target="_blank" data-v-882df4f6>VuePress Powered</a>
+            &amp;
+            <a href="https://github.com/korilin/vuepress-theme-twipress" target="_blank" data-v-882df4f6>Twipress Theme</a></div> <div data-v-882df4f6>
+            备案号：<a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/" data-v-882df4f6>
+                粤ICP备19149652号
+            </a></div></footer></div></div></div><div id="toolbar" data-v-fe84d7a0><!----> <div class="toolbar" data-v-fe84d7a0><div class="search" data-v-fe84d7a0><div class="search-box" data-v-fe84d7a0><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="post-sort" data-v-fe84d7a0><div class="title" data-v-fe84d7a0>Post Order</div> <div class="op" data-v-fe84d7a0>
+                By Time
+                <svg t="1610607067172" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2795" width="20" height="20" class="icon" style="display:;" data-v-fe84d7a0><path d="M495.765247 353.091804 333.414649 190.741205 171.065074 353.091804 304.386522 353.091804l0 420.142919c0 17.947767 14.046924 32.469506 31.978319 32.469506 17.931395 0 31.978319-14.522762 31.978319-32.469506L368.343159 353.091804 495.765247 353.091804z" p-id="2796" data-v-fe84d7a0></path> <path d="M720.104665 672.874991 720.104665 221.24494c0-17.947767-14.046924-32.469506-31.978319-32.469506s-31.978319 14.522762-31.978319 32.469506l0 451.630051-127.913275 0 162.349575 162.349575 162.349575-162.349575L720.104665 672.874991z" p-id="2797" data-spm-anchor-id="a313x.7781069.0.i7" fill="#1296db" class="selected" data-v-fe84d7a0></path></svg> <svg t="1610612746140" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2973" width="20" height="20" class="icon" style="display:none;" data-v-fe84d7a0><path d="M495.765247 353.091804 333.414649 190.741205 171.065074 353.091804 304.386522 353.091804l0 420.142919c0 17.947767 14.046924 32.469506 31.978319 32.469506 17.931395 0 31.978319-14.522762 31.978319-32.469506L368.343159 353.091804 495.765247 353.091804z" p-id="2974" data-spm-anchor-id="a313x.7781069.0.i9" fill="#1296db" class="selected" data-v-fe84d7a0></path> <path d="M720.104665 672.874991 720.104665 221.24494c0-17.947767-14.046924-32.469506-31.978319-32.469506s-31.978319 14.522762-31.978319 32.469506l0 451.630051-127.913275 0 162.349575 162.349575 162.349575-162.349575L720.104665 672.874991z" p-id="2975" data-v-fe84d7a0></path></svg>
+                :
+                <span class="content" data-v-fe84d7a0>DESC</span></div></div> <div class="statistics" data-v-fe84d7a0><div class="title" data-v-fe84d7a0>Article Statistics</div> <div class="data" data-v-fe84d7a0>
+                Article: 27
+            </div> <div class="data" data-v-fe84d7a0>
+                Categories: 5
+            </div> <div class="data" data-v-fe84d7a0>
+                Tags: 18
+            </div> <div class="more" data-v-fe84d7a0><a href="/blog/archive" data-v-fe84d7a0>see more</a></div></div></div></div></span></div><div class="global-ui"></div></div>
+    <script src="/blog/assets/js/app.3aaa0c49.js" defer></script><script src="/blog/assets/js/27.7e05cc7c.js" defer></script>
+  </body>
+</html>
